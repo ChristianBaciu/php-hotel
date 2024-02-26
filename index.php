@@ -60,5 +60,24 @@ ottenere una lista con hotel che dispongono di parcheggio e che hanno un voto di
 Se non viene specificato nessun filtro, visualizzare come in precedenza tutti gli hotel.
  -->
 
+<ul>
+    <?php foreach($hotels as $prova): ?>
+
+        <li>    
+            <?= $prova ['name'] ?>
+            |
+            <?= $prova ['description'] ?>
+
+            <?= $prova ['parking'] ?>
+            |
+            <?= $prova ['vote'] ?>
+            |
+            <?= $prova ['distance_to_center'] ?>
+        </li>
+
+    <?php endforeach; ?>
+</ul>
+
+
 </body>
 </html>
