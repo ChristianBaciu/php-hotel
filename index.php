@@ -62,9 +62,24 @@
 
 
 
+    // verifica se in get è presente 'vote', controlla se vote è diverso da vuoto ' '
+    if(isset($_GET['vote']) && $_GET['vote'] !== ' ' ){
 
+        // array temporaneo
+        $tempWithparking = [];
 
+        // ciclo per l'elemento filtroHotel
+        foreach($filtroHotel as $element){
 
+            // verifica se vote è mag o uguale dal n. scelto
+            if($element['vote'] >= $_GET['vote'] ){
+                // se c'è un parcheggio, viene aggiunto in tempWithparking
+                $tempWithparking[] = $element;
+            }
+        }
+        // copia l'array del filtroHotel in tempWithparking
+        $filtroHotel = $tempWithparking;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -97,17 +112,24 @@
 <body style="background-color: darkgray;">
 
     <div class="container">
-
         <form method="get" action="index.php">
             <div  class="row">
                 <div class="col-3">
                     <div class="my-3">
+                        
                         <label for="parcheggio" class="form-label">parcheggio</label>
                         <select name="parcheggio">
                             <option value="">scegli</option>
                             <option value="selcParcheggio">parcheggio</option>
                         </select>
+
+                        <div class="my-3">
+                            <label for="voto" class="form-label">voto</label>
+                            <input type="number" name="vote" min="0" max="5">
+                        </div>
+
                         <button>Invia</button>
+
                     </div>
                 </div>
             </div>
